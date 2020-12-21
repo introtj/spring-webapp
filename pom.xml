@@ -23,10 +23,10 @@
         <!-- Web dependencies -->
         <!-- Version update should also be done in wro.xml, petclinic.less and static resources: htmlHeader.tag and footer.tag-->
         <webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
-        <webjars-jquery-ui.version>1.12.1</webjars-jquery-ui.version>
-        <webjars-jquery.version>3.5.1</webjars-jquery.version>
-        <webjars-locator.version>0.30</webjars-locator.version>
-        <wro4j.version>1.8.0</wro4j.version> <!-- wro4j 1.0.0 requires Java 9 -->
+        <webjars-jquery-ui.version>1.11.4</webjars-jquery-ui.version>
+        <webjars-jquery.version>2.2.4</webjars-jquery.version>
+        <wro4j.version>1.8.0</wro4j.version>
+        <webjars-locator.version>0.40</webjars-locator.version>
 
         <!-- Maven plugins -->
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
@@ -36,6 +36,7 @@
         <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
         <maven-war-plugin.version>3.3.1</maven-war-plugin.version>
         <jacoco-maven-plugin>0.8.6</jacoco-maven-plugin>
+        <jetty-maven.version>9.4.24.v20191120</jetty-maven.version>
 
         <!-- Java EE / Java SE dependencies -->
         <tomcat.version>9.0.39</tomcat.version>
@@ -263,6 +264,22 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>${jaxb-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>${jaxb-runtime.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>javax.activation-api</artifactId>
+            <version>${javax-activation.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -377,6 +394,14 @@
                         <version>${mockito.version}</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+
+            <!-- 로컬 실행을 위한 플러그인-->
+            <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-maven-plugin -->
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty-maven.version}</version>
             </plugin>
 
         </plugins>
