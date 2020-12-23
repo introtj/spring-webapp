@@ -5,6 +5,88 @@ clone coding 한 프로젝트 입니다.
 
 원본 : [spring-framework-petclinic](https://github.com/spring-petclinic/spring-framework-petclinic)
 
+## Persistence layer 선택
+spring.profiles 설정으로 persistence layer 를 선택 가능하도록 구성했다.
+
+spring.profiles.default 설정 : web.xml
+```
+<context-param>
+    <param-name>spring.profiles.default</param-name>
+    <param-value>jpa</param-value>
+</context-param>
+```
+
+VM 옵셔느로 아래 3 가지 옵션 중 하나를 사용하면 된다.
+
+기본 값은 jpa 이다.
+```
+-Dspring.profiles.active=jpa
+-Dspring.profiles.active=jdbc
+-Dspring.profiles.active=spring-data-jpa
+```
+
+## Build Profiles
+```
+<profile>
+    <id>H2</id>
+    <activation>
+        <activeByDefault>true</activeByDefault>
+    </activation>
+    <properties>
+        <environment>h2</environment>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2database.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+</profile>
+<profile>
+    <id>HSQLDB</id>
+    <properties>
+        <environment>hsqldb</environment>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+</profile>
+<profile>
+    <id>MySQL</id>
+    <properties>
+        <environment>mysql</environment>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-driver.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+</profile>
+<profile>
+    <id>PostgreSQL</id>
+    <properties>
+        <environment>postgresql</environment>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql-driver.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+</profile>
+```
 ## webjar 적용
 pom.xml
 ```
@@ -52,7 +134,7 @@ servlet-context.xml
 
 ### With Maven command line
 ```
-./mvnw jetty:run-war
+./mvnw jetty:run-war -P H2 -Dspring.profiles.active=jdbc
 ```
 
 ### IntelliJ IDEA

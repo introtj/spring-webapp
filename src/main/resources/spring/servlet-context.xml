@@ -13,7 +13,6 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="com.example.petclinic.web" />
-    <context:component-scan base-package="com.example.petclinic.service" />
 
     <mvc:view-resolvers>
         <mvc:content-negotiation use-not-acceptable="true">
