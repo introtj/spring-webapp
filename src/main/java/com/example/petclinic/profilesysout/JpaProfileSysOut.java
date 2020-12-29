@@ -11,7 +11,7 @@ public class JpaProfileSysOut {
 
     @Autowired
     public JpaProfileSysOut(@Value("${spring.profile.message}") String msg,
-                            @Value("${spring.profiles.active}") String springProfilesActive) {
+                            @Value("${spring.profiles.active:jpa}") String springProfilesActive) {
         System.out.println("##################################");
         System.out.println("##################################");
         System.out.println("##             jpa              ##");

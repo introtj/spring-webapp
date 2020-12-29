@@ -7,10 +7,6 @@
 
     <!-- ========================= DATASOURCE DEFINITION ========================= -->
 
-    <!-- Configurer that replaces ${...} placeholders with values from a properties file -->
-    <!-- (in this case, JDBC-related settings for the dataSource definition below) -->
-    <context:property-placeholder location="classpath:*.properties" system-properties-mode="OVERRIDE"/>
-
     <!-- DataSource configuration for the tomcat jdbc connection pool
     See here for more details on commons-dbcp versus tomcat-jdbc:
     http://blog.ippon.fr/2013/03/13/improving-the-performance-of-the-spring-petclinic-sample-application-part-3-of-5/-->
