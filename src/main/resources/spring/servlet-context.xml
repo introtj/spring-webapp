@@ -12,8 +12,12 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="com.example.petclinic.web" />
-
+    <!--
+    - The ContentNegotiatingViewResolver delegates to the InternalResourceViewResolver and BeanNameViewResolver,
+    - and uses the requested media type (determined by the path extension) to pick a matching view.
+    - When the media type is 'text/html', it will delegate to the InternalResourceViewResolver's JstlView,
+    - otherwise to the BeanNameViewResolver.
+    -->
     <mvc:view-resolvers>
         <mvc:content-negotiation use-not-acceptable="true">
             <mvc:default-views>
@@ -23,9 +27,16 @@
             </mvc:default-views>
         </mvc:content-negotiation>
 
+        <!-- Registering BeanNameViewResolver -->
         <mvc:bean-name/>
+
+        <!-- InternalViewResolver -->
         <mvc:jsp prefix="/WEB-INF/jsp/" suffix=".jsp"/>
     </mvc:view-resolvers>
+
+    <context:component-scan base-package="com.example.petclinic.web" />
+
+    <mvc:annotation-driven />
 
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 

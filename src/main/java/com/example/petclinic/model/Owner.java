@@ -2,9 +2,8 @@ package com.example.petclinic.model;
 
 import org.springframework.core.style.ToStringCreator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "owners")
@@ -18,6 +17,9 @@ public class Owner extends Person {
 
     @Column(name = "telephone")
     private String telephone;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    private Set<Pet> pets;
 
     public String getAddress() {
         return address;
@@ -43,15 +45,23 @@ public class Owner extends Person {
         this.telephone = telephone;
     }
 
+    public Set<Pet> getPets() {
+        return pets;
+    }
+
+    public void setPets(Set<Pet> pets) {
+        this.pets = pets;
+    }
+
     @Override
     public String toString() {
         return new ToStringCreator(this)
-                .append("id", id)
-                .append("address", address)
-                .append("city", city)
-                .append("telephone", telephone)
-                .append("firstName", firstName)
-                .append("lastName", lastName)
-                .toString();
+            .append("id", id)
+            .append("address", address)
+            .append("city", city)
+            .append("telephone", telephone)
+            .append("firstName", firstName)
+            .append("lastName", lastName)
+            .toString();
     }
 }
