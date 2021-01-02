@@ -15,6 +15,7 @@
     <context:component-scan base-package="com.example.petclinic.profilesysout" />
 
     <!-- enables scanning for @Transactional annotations -->
+    <!-- transaction manager Bean 의 id 가 transactionManager 일 경우 transaction-manager 속성 생략 가능 -->
     <tx:annotation-driven />
 
 

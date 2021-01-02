@@ -30,4 +30,13 @@ public class JpaOwnerRepositoryImpl implements OwnerRepository {
 
         return (Owner) query.getSingleResult();
     }
+
+    @Override
+    public void saveOwner(Owner owner) {
+        if (owner.getId() == null) {
+            this.entityManager.persist(owner);
+        } else {
+            this.entityManager.merge(owner);
+        }
+    }
 }

@@ -8,4 +8,6 @@ public interface OwnerRepository {
     List<Owner> findByLastName(String lastName);
 
     Owner findById(int ownerId);
+
+    void saveOwner(Owner owner);
 }
