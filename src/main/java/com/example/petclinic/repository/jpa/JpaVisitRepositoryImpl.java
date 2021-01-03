@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import java.util.Collection;
 
 @Repository
-public class VisitRepositoryImpl implements VisitRepository {
+public class JpaVisitRepositoryImpl implements VisitRepository {
 
     @PersistenceContext
     private EntityManager entityManager;

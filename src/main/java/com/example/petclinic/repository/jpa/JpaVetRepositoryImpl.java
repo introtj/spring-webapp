@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import java.util.Collection;
 
 @Repository
-public class VetRepositoryImpl implements VetRepository {
+public class JpaVetRepositoryImpl implements VetRepository {
 
     @PersistenceContext
     private EntityManager entityManager;

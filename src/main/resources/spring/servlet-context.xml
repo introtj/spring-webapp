@@ -36,7 +36,7 @@
 
     <context:component-scan base-package="com.example.petclinic.web" />
 
-    <mvc:annotation-driven />
+    <mvc:annotation-driven conversion-service="conversionService"/>
 
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 
@@ -47,6 +47,14 @@
     <mvc:view-controller path="/" view-name="welcome"/>
 
     <mvc:default-servlet-handler />
+
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="formatters">
+            <set>
+                <bean class="com.example.petclinic.web.PetTypeFormatter"/>
+            </set>
+        </property>
+    </bean>
 
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
           p:basename="messages/messages"/>

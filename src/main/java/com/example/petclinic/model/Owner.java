@@ -5,6 +5,7 @@ import org.springframework.core.style.ToStringCreator;
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
+import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -69,5 +70,9 @@ public class Owner extends Person {
             .append("firstName", firstName)
             .append("lastName", lastName)
             .toString();
+    }
+
+    public Optional<Pet> getPet(String petName) {
+        return this.getPets().stream().filter(pet -> pet.getName().equals(petName)).findAny();
     }
 }

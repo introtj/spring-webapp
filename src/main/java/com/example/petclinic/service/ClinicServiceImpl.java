@@ -1,9 +1,6 @@
 package com.example.petclinic.service;
 
-import com.example.petclinic.model.Owner;
-import com.example.petclinic.model.Pet;
-import com.example.petclinic.model.Vet;
-import com.example.petclinic.model.Visit;
+import com.example.petclinic.model.*;
 import com.example.petclinic.repository.OwnerRepository;
 import com.example.petclinic.repository.PetRepository;
 import com.example.petclinic.repository.VetRepository;
@@ -15,14 +12,14 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
-public class ClientServiceImpl implements ClientService {
+public class ClinicServiceImpl implements ClinicService {
 
     private final OwnerRepository ownerRepository;
     private final PetRepository petRepository;
     private final VisitRepository visitRepository;
     private final VetRepository vetRepository;
 
-    public ClientServiceImpl(OwnerRepository ownerRepository,
+    public ClinicServiceImpl(OwnerRepository ownerRepository,
                              PetRepository petRepository,
                              VisitRepository visitRepository,
                              VetRepository vetRepository) {
@@ -54,6 +51,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
+    @Transactional
     public void savePet(Pet pet) {
         this.petRepository.savePet(pet);
     }
@@ -71,5 +69,10 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Collection<Visit> findVisitsByPetId(int petId) {
         return this.visitRepository.findVisitByPetId(petId);
+    }
+
+    @Override
+    public List<PetType> findPetTypes() {
+        return this.petRepository.findPetTypes();
     }
 }
