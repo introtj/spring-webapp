@@ -5,6 +5,7 @@ import com.example.petclinic.repository.OwnerRepository;
 import com.example.petclinic.repository.PetRepository;
 import com.example.petclinic.repository.VetRepository;
 import com.example.petclinic.repository.VisitRepository;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -57,11 +58,13 @@ public class ClinicServiceImpl implements ClinicService {
     }
 
     @Override
+    @Transactional
     public void saveVisit(Visit visit) {
         this.visitRepository.saveVisit(visit);
     }
 
     @Override
+    @Cacheable(cacheNames = {"vets"})
     public Collection<Vet> findVets() {
         return this.vetRepository.findVets();
     }

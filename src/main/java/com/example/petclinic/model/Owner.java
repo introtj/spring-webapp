@@ -1,12 +1,13 @@
 package com.example.petclinic.model;
 
+import org.springframework.beans.support.MutableSortDefinition;
+import org.springframework.beans.support.PropertyComparator;
 import org.springframework.core.style.ToStringCreator;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "owners")
@@ -52,12 +53,30 @@ public class Owner extends Person {
         this.telephone = telephone;
     }
 
-    public Set<Pet> getPets() {
-        return pets;
+    protected Set<Pet> getPetsInternal() {
+        if (this.pets == null) {
+            this.pets = new HashSet<>();
+        }
+        return this.pets;
+    }
+
+    protected void setPetsInternal(Set<Pet> pets) {
+        this.pets = pets;
+    }
+
+    public List<Pet> getPets() {
+        List<Pet> sortedPets = new ArrayList<>(getPetsInternal());
+        PropertyComparator.sort(sortedPets, new MutableSortDefinition("name", true, true));
+        return Collections.unmodifiableList(sortedPets);
     }
 
     public void setPets(Set<Pet> pets) {
         this.pets = pets;
+    }
+
+    public void addPet(Pet pet) {
+        getPetsInternal().add(pet);
+        pet.setOwner(this);
     }
 
     @Override

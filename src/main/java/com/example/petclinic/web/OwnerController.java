@@ -42,12 +42,7 @@ public class OwnerController {
 
     @GetMapping(value = "/owners/{ownerId}")
     public String getOwnerById(@PathVariable(name = "ownerId") int ownerId, Model model) {
-        Owner owner = this.clinicService.findOwnerById(ownerId);
-        if (owner == null) {
-
-        }
-
-        model.addAttribute("owner", owner);
+        model.addAttribute("owner", this.clinicService.findOwnerById(ownerId));
 
         return "owners/ownerDetails";
     }

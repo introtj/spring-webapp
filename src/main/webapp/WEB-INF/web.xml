@@ -10,7 +10,7 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:/spring/root-context.xml</param-value>
+        <param-value>classpath:/spring/root-context.xml, classpath:/spring/cache-config.xml, classpath:/spring/monitor-config.xml</param-value>
     </context-param>
 
     <context-param>
