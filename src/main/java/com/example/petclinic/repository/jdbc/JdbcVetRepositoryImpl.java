@@ -9,7 +9,7 @@ import java.util.Collection;
 @Repository
 public class JdbcVetRepositoryImpl implements VetRepository {
     @Override
-    public Collection<Vet> findVets() {
+    public Collection<Vet> findAll() {
         return null;
     }
 }

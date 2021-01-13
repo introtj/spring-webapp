@@ -15,7 +15,7 @@ public class JpaVetRepositoryImpl implements VetRepository {
     private EntityManager entityManager;
 
     @Override
-    public Collection<Vet> findVets() {
+    public Collection<Vet> findAll() {
         return this.entityManager
             .createQuery("SELECT vet FROM Vet AS vet left join fetch vet.specialties ORDER BY vet.lastName, vet.firstName", Vet.class)
             .getResultList();

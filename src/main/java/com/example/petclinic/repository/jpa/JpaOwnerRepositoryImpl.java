@@ -32,7 +32,7 @@ public class JpaOwnerRepositoryImpl implements OwnerRepository {
     }
 
     @Override
-    public void saveOwner(Owner owner) {
+    public void save(Owner owner) {
         if (owner.getId() == null) {
             this.entityManager.persist(owner);
         } else {

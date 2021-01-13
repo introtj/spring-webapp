@@ -5,5 +5,5 @@ import com.example.petclinic.model.Vet;
 import java.util.Collection;
 
 public interface VetRepository {
-    Collection<Vet> findVets();
+    Collection<Vet> findAll();
 }

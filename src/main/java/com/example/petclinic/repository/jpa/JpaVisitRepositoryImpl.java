@@ -16,7 +16,7 @@ public class JpaVisitRepositoryImpl implements VisitRepository {
 
 
     @Override
-    public void saveVisit(Visit visit) {
+    public void save(Visit visit) {
         if (visit.getId() == null) {
             this.entityManager.persist(visit);
         } else {

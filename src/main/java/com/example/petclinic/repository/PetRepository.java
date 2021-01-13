@@ -9,7 +9,7 @@ public interface PetRepository {
 
     Pet findById(int petId);
 
-    void savePet(Pet pet);
+    void save(Pet pet);
 
     List<PetType> findPetTypes();
 }

@@ -9,7 +9,7 @@ import java.util.Collection;
 @Repository
 public class JdbcVisitRepositoryImpl implements VisitRepository {
     @Override
-    public void saveVisit(Visit visit) {
+    public void save(Visit visit) {
 
     }
 

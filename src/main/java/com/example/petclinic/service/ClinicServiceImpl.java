@@ -43,7 +43,7 @@ public class ClinicServiceImpl implements ClinicService {
     @Override
     @Transactional
     public void saveOwner(Owner owner) {
-        this.ownerRepository.saveOwner(owner);
+        this.ownerRepository.save(owner);
     }
 
     @Override
@@ -54,19 +54,19 @@ public class ClinicServiceImpl implements ClinicService {
     @Override
     @Transactional
     public void savePet(Pet pet) {
-        this.petRepository.savePet(pet);
+        this.petRepository.save(pet);
     }
 
     @Override
     @Transactional
     public void saveVisit(Visit visit) {
-        this.visitRepository.saveVisit(visit);
+        this.visitRepository.save(visit);
     }
 
     @Override
     @Cacheable(cacheNames = {"vets"})
     public Collection<Vet> findVets() {
-        return this.vetRepository.findVets();
+        return this.vetRepository.findAll();
     }
 
     @Override

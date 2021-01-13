@@ -15,7 +15,7 @@ public class JdbcPetRepositoryImpl implements PetRepository {
     }
 
     @Override
-    public void savePet(Pet pet) {
+    public void save(Pet pet) {
 
     }
 

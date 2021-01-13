@@ -9,5 +9,5 @@ public interface OwnerRepository {
 
     Owner findById(int ownerId);
 
-    void saveOwner(Owner owner);
+    void save(Owner owner);
 }

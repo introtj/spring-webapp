@@ -71,7 +71,7 @@ public class JdbcOwnerRepositoryImpl implements OwnerRepository {
     }
 
     @Override
-    public void saveOwner(Owner owner) {
+    public void save(Owner owner) {
         BeanPropertySqlParameterSource parameterSource = new BeanPropertySqlParameterSource(owner);
 
         if (owner.isNew()) {
